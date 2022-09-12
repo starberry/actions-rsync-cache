@@ -17,6 +17,9 @@ try {
     const key = core.getInput("key", { required: true });
     if (!key) throw new Error("key is required");
 
+    const hash = makeKey(key);
+    core.info(`Cache key ${key} hashes to ${hash}`);
+
     const path = core.getInput("path", { required: true });
     let paths = path
         .split("\n")
@@ -30,7 +33,7 @@ try {
     rsync.flags('av');
 
     paths.forEach(p => rsync.source(p));
-    rsync.destination(destination.trimEnd('/') + '/' + makeKey(key) + '/');
+    rsync.destination(`${destination.trimEnd('/')}/${hash}/`);
 
     rsync.output(
         data => core.info(data.toString()),

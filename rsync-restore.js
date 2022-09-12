@@ -17,11 +17,14 @@ try {
     const key = core.getInput("key", { required: true });
     if (!key) throw new Error("key is required");
 
+    const hash = makeKey(key);
+    core.info(`Cache key ${key} hashes to ${hash}`);
+
     const rsync = new Rsync();
 
     rsync.flags('av');
 
-    rsync.source(destination.trimEnd('/') + '/' + makeKey(key) + '/');
+    rsync.source(`${destination.trimEnd('/')}/${hash}/`);
     rsync.destination('.');
 
     rsync.output(
