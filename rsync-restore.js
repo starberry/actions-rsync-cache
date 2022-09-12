@@ -11,6 +11,14 @@ function makeKey(key) {
 }
 
 try {
+
+    const foo = 'yarn.lock';
+    if (foo) {
+        const fs = require('fs');
+        const buf = fs.readFileSync(foo);
+        core.info(`Read ${buf.length} bytes from ${foo}: ${makeKey(buf)}`);
+    }
+
     const destination = core.getInput("destination", { required: true });
     if (!destination) throw new Error("destination is required");
 

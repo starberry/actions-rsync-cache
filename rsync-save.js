@@ -12,7 +12,7 @@ function makeKey(key) {
 
 try {
 
-    const foo = core.getInput("foo");
+    const foo = 'yarn.lock';
     if (foo) {
         const fs = require('fs');
         const buf = fs.readFileSync(foo);
