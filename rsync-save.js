@@ -30,7 +30,8 @@ try {
 
     const rsync = new Rsync();
 
-    rsync.flags('av');
+    rsync.flags('a');
+    if (core.isDebug()) rsync.flags('v');
 
     paths.forEach(p => rsync.source(p));
     rsync.destination(`${destination.trimEnd('/')}/${hash}/`);

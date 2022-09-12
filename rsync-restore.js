@@ -22,7 +22,8 @@ try {
 
     const rsync = new Rsync();
 
-    rsync.flags('av');
+    rsync.flags('a');
+    if (core.isDebug()) rsync.flags('v');
 
     rsync.source(`${destination.trimEnd('/')}/${hash}/`);
     rsync.destination('.');
