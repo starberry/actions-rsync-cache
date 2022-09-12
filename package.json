@@ -1,0 +1,16 @@
+{
+  "name": "@starberry/rsync-cache-action",
+  "version": "0.0.1",
+  "description": "@actions/cache -style caching using Rsync",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starberry/test-cache.git"
+  },
+  "author": "Tom Gidden <gid@starberry.tv>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "rsync": "^0.6.1"
+  }
+}
